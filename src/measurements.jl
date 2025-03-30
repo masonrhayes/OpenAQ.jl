@@ -21,7 +21,7 @@ Fetches sensor measurements from the OpenAQ API.
 - `data::DataFrame | Array{...}`: A DataFrame or array containing the sensor measurements.  The data type depends on the `as_data_frame` argument.
 """
 function list_sensor_measurements(
-    sensors_id::Union{Missing, Int} = missing;
+    sensors_id::Int;
     data::Union{String, Missing} = "measurements",
     rollup::Union{Missing, String} = missing,
     datetime_from::Union{DateTime, Missing} = missing, 
@@ -61,6 +61,7 @@ function list_sensor_measurements(
 end
 
 function validate_datetime(dt::DateTime)
+    dt > now() ? throw(ArgumentError("Date time must be in the past")) : nothing
     # Only get to accuracy of the nearest second
     round(dt, Second) |> string
 end
@@ -191,7 +192,7 @@ end
 
 # 
 function list_location_measurements(
-    locations_id::Union{Missing, Int} = missing;
+    locations_id::Int;
     parameters_ids::Union{Missing, Int, Vector{Int}} = missing,
     data::Union{String, Missing} = "measurements",
     rollup::Union{Missing, String} = missing,

@@ -17,12 +17,14 @@ Get the latest measurements by locations_id.
 - A DataFrame or a List of results.
 """
 function list_location_latest(locations_id::Int;
-                             datetime_min::Union{Missing, String}=missing,
+                             datetime_min::Union{Missing, DateTime}=missing,
                              limit::Union{Missing, Int}=missing,
                              page::Union{Missing, Int}=missing,
                              as_data_frame::Bool=true,
                              rate_limit::Bool=false, 
                              api_key::Union{String, Missing}=missing)
+
+    datetime_min = validate_datetime(datetime_min)
     
     params_list = Dict(
         :datetime_min =>datetime_min,
@@ -90,18 +92,21 @@ end
 
 
 function list_parameters_latest(parameters_id::Int;
-    datetime_min::Union{Missing, String}=missing,
+    datetime_min::Union{Missing, DateTime}=missing,
     limit::Union{Missing, Int}=missing,
     page::Union{Missing, Int}=missing,
     as_data_frame::Bool=true,
     rate_limit::Bool=false, 
     api_key::Union{String, Missing}=missing)
 
+    datetime_min = validate_datetime(datetime_min)
+
     params_list = Dict(
     :datetime_min =>datetime_min,
     :limit =>limit,
     :page =>page
     )
+
 
 # If no parameter provided, do not pass it as a query.
 params_list = filter(x -> (!ismissing(x.second)), params_list)
