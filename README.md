@@ -1,9 +1,10 @@
 
-# OpenAQ
+# OpenAQ.jl  <img src="docs/src/assets/logo.png" align="right" alt="openaq hex logo" style="height: 140px;"/>
 
-A Julia package for interacting with the OpenAQ API. Functionality is intended to be closely aligned with the OpenAQ R package, [openaq-r](https://github.com/openaq/openaq-r/).
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
-Documentation for [OpenAQ.jl](https://github.com/masonrhayes/OpenAQ.jl)
+An (unofficial) Julia package for interacting with the OpenAQ API. The funcationality of this package is intended to be closely aligned with the OpenAQ R package, [openaq-r](https://github.com/openaq/openaq-r/).
+
 
 To add the package, run:
 
