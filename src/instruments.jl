@@ -153,4 +153,3 @@ function list_manufacturer_instruments(
 
     return data
 end
-

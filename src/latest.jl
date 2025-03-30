@@ -108,14 +108,14 @@ function list_parameters_latest(parameters_id::Int;
     )
 
 
-# If no parameter provided, do not pass it as a query.
-params_list = filter(x -> (!ismissing(x.second)), params_list)
+    # If no parameter provided, do not pass it as a query.
+    params_list = filter(x -> (!ismissing(x.second)), params_list)
 
-path = "parameters/$parameters_id/latest"
-data = openaq_fetch(path, params_list, rate_limit, api_key)
+    path = "parameters/$parameters_id/latest"
+    data = openaq_fetch(path, params_list, rate_limit, api_key)
 
 
-data = as_data_frame ? convert_to_dataframe(data) |> process_latest : data
+    data = as_data_frame ? convert_to_dataframe(data) |> process_latest : data
 
-return data
+    return data
 end

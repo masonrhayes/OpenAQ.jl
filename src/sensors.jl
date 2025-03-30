@@ -1,4 +1,15 @@
+"""
+Retrieves sensor data for a given sensor ID.
 
+Args:
+    sensors_id: The ID of the sensor to retrieve data for (Int).
+    as_data_frame: If true, returns the data as a DataFrame. If false, returns the raw data. Defaults to `true`.
+    rate_limit: If true, applies rate limiting to the API requests. Defaults to `false`.
+    api_key: The API key to use for authentication. If `missing`, no API key is used. Defaults to `missing`.
+
+Returns:
+    A DataFrame or the raw data, depending on the value of `as_data_frame`.
+"""
 function get_sensor(sensors_id::Int;
     as_data_frame::Bool = true, 
     rate_limit::Bool = false, 
@@ -45,7 +56,18 @@ function process_sensors(df::DataFrame)
 end
 
 
+"""
+Retrieves sensor data for a specific location.
 
+Args:
+    locations_id (Int): The ID of the location for which to retrieve sensor data.
+    as_data_frame (Bool; optional): If `true`, returns the data as a DataFrame. Defaults to `true`.
+    rate_limit (Bool; optional): If `true`, applies a rate limit to the API requests. Defaults to `false`.
+    api_key (Union{String, Missing}; optional): The API key to use for authentication. Defaults to `missing`.
+
+Returns:
+    A DataFrame or the raw data, depending on the value of `as_data_frame`.
+"""
 function get_location_sensors(locations_id::Int;
     as_data_frame::Bool = true, 
     rate_limit::Bool = false, 

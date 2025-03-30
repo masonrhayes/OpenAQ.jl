@@ -122,6 +122,3 @@ function list_countries(;providers_id::Union{Int,Vector{Int}, Missing}=missing, 
         return data
     end
 end
-
-
-list_countries()

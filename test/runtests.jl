@@ -17,7 +17,7 @@ using Test
     @test_throws MethodError get_manufacturer() 
 end
 
-sleep(5)
+
 
 @testset "Instruments" begin 
     @test list_instruments() isa DataFrame
@@ -31,7 +31,7 @@ sleep(5)
 
 end
 
-sleep(5)
+
 
 @testset "Countries" begin 
     # get_country(country_id) should return a DataFrame
@@ -48,7 +48,7 @@ sleep(5)
 
 end
 
-sleep(5)
+
 
 
 
@@ -72,7 +72,7 @@ sleep(5)
     @test_throws ArgumentError list_location_latest(142; datetime_min = now() + Month(1)) 
 end
 
-sleep(10)
+
 
 @testset "Locations" begin 
     # get_location(location_id) should return a DataFrame
@@ -87,7 +87,7 @@ sleep(10)
 
 end
 
-sleep(5)
+
 
 @testset "Measurements" begin 
     # list_xx_measurements requires providing an ID
@@ -113,7 +113,7 @@ end
     @test list_parameters() isa DataFrame
 end
 
-sleep(5)
+
 
 @testset "Providers" begin 
     @test_throws MethodError get_provider() 
@@ -126,7 +126,7 @@ sleep(5)
     @test list_providers() isa DataFrame
 end
 
-sleep(5)
+
 
 @testset "Owners" begin 
     @test_throws MethodError get_owner() 
@@ -139,7 +139,7 @@ sleep(5)
     @test list_owners() isa DataFrame
 end
 
-sleep(5)
+
 
 @testset "Sensors" begin 
     @test_throws MethodError get_sensor() 
