@@ -212,7 +212,7 @@ licenses, monitor type, mobile sensors, instruments, countries, and sorting.
 """
 function list_locations(;
     bbox::Union{Missing, AbstractVector, String} = missing,
-    coordinates::Union{Missing, AbstractVector} = missing,
+    coordinates::Union{Missing, NamedTuple} = missing,
     radius::Union{Missing, Int} = missing,
     providers_id::Union{Missing, AbstractVector, Int} = missing,
     parameters_id::Union{Missing, AbstractVector, Int} = missing,
@@ -231,6 +231,8 @@ function list_locations(;
     as_data_frame::Bool = true,
     rate_limit::Bool = false,
     api_key::Union{Missing, String} = missing)
+
+    coordinates = !ismissing(coordinates) ? join(coordinates, ",") : coordinates
     
      
     params_list = Dict(
