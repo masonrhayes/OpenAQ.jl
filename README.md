@@ -12,7 +12,17 @@ using Pkg
 Pkg.add(url = "https://github.com/masonrhayes/OpenAQ.jl")
 ```
 
-# Example usage 
+# Quick start
+
+The following guide is a quick and minimal example to get you started.
+
+1. Register for an account at https://explore.openaq.org/register.
+2. Find your API key in the user account page.
+3. Save your API key as the OPENAQ_API_KEY environment variable. You can edit this in two ways
+    1. **Recommended**: Add `ENV["OPENAQ_API_KEY"] = "your_api_key"` to your `.julia/config/startup.jl` file (which may not yet exist). This will make your API key available on each new Julia session.
+    2. Run `ENV["OPENAQ_API_KEY"] = "your_api_key"` in the Julia REPL. This will require running again with each new Julia session.
+
+Now we can query OpenAQ for air quality monitoring locations. For this example we will query locations that measure PM2.5 near (with 10km) Antananarivo, Madagascar (-18.90848, 47.53751):
 
 ```julia
 using OpenAQ 
