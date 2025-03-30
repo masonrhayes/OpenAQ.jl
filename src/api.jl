@@ -1,8 +1,12 @@
 # Module-level exports
 
 """
-Set the API key value.
-A helper function to set the OPENAQ_API_KEY environment variable.
+A helper function to set the Open AQ API key.
+
+    # Examples 
+
+    set_api_key("your_OpenAQ_api_key")
+
 """
 function set_api_key(api_key::String)
     ENV["OPENAQ_API_KEY"] = api_key
@@ -11,14 +15,12 @@ end
 """
 
 Gets the current API Key value.
-If run in RSTUDIO, prompts for user input to enter the key.
 """
 function get_api_key()
     key = ENV["OPENAQ_API_KEY"]
 end
 
-    """
-
+"""
 Sets the base URL environment variable.
 """
 function set_base_url(base_url::String)
@@ -26,7 +28,6 @@ function set_base_url(base_url::String)
 end
 
 """
-
 Gets the current base URL value, defaults to OpenAQ's default URL if not set.
 """
 function get_base_url()
@@ -34,7 +35,6 @@ function get_base_url()
 end
 
 """
-
 Checks that API Key is set when using the OpenAQ base URL.
 """
 function check_api_key(base_url::String, api_key::String)
@@ -44,7 +44,6 @@ function check_api_key(base_url::String, api_key::String)
 end
 
 """
-
 Enables rate limiting header.
 """
 function enable_rate_limit()
@@ -52,7 +51,6 @@ function enable_rate_limit()
 end
 
 """
-
 Disables or toggles rate limiting header.
 """
 function get_rate_limit()
@@ -61,10 +59,8 @@ function get_rate_limit()
 end
 
 """
-
 Creates an HTTP request object for OpenAQ API requests.
 """
-# Note: Replace with appropriate HTTP client library (e.g., HTTP.jl)
 function openaq_request(path::String; query_params::Dict = Dict(), api_key::Union{String, Missing} = missing)
     api_key = (ismissing(api_key) | isnothing(api_key)) ? get_api_key() : api_key
 
@@ -90,6 +86,7 @@ function openaq_request(path::String; query_params::Dict = Dict(), api_key::Unio
 end
 
 
+# TODO Adjust implementation of HTTP retries and rate limiting logic. 
 
 """
 req_is_transient(reponse::HTTP.Messages.Response) -> Bool
@@ -162,4 +159,3 @@ function openaq_fetch(path::String, query_params::Dict = Dict(), rate_limit::Boo
     response = HTTP.get(req, headers, query = query_params, retry = true, retries = 4, retry_delays = ExponentialBackOff(n = 4))
     return response
 end
-
