@@ -1,0 +1,16 @@
+name = "OpenAQ"
+uuid = "3f1771f5-1fa7-4e87-8fbd-7e840dcb438d"
+authors = ["Mason Ross Hayes <masonhayes2@protonmail.com>"]
+version = "0.1.0"
+
+[deps]
+DataFramesMeta = "1313f7d8-7da2-5740-9ea0-a2ca25f37964"
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+
+[compat]
+DataFramesMeta = "0.15.4"
+Dates = "1.11.0"
+HTTP = "1.10.15"
+JSON = "0.21.4"
